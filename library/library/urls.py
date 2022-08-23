@@ -23,11 +23,13 @@ router = DefaultRouter()
 router.register('authors',AuthorModelViewSet)
 router.register('books',BookModelViewSet)
 router.register('biographies',BiographyModelViewSet)
-
+from rest_framework.authtoken import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
     path('api-auth/', include('rest_framework.urls')),
+    path('api-token-auth/', views.obtain_auth_token),
+
 
 ]
